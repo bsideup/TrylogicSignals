@@ -5,8 +5,9 @@ abstract public class TwoArgsSignal<T extends TwoArgsSignal, ARG0, ARG1> extends
     public void call(ARG0 arg0, ARG1 arg1) {
         for(TwoArgsSignalListener listener : listeners) {
             try {
-                listener.onSignal(this, arg0, arg1);
-            } catch(Throwable ignored) {
+                listener.onSignal((T) this, arg0, arg1);
+            } catch(Throwable e) {
+                e.printStackTrace();
             }
         }
     }
